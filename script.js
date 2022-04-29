@@ -5,9 +5,11 @@ let number = document.querySelector('.number');
 const userInput = document.querySelector('.guess');
 const message = document.querySelector('.message');
 const scoreBoard = document.querySelector('.score');
+const highscoreBoard = document.querySelector('.highscore');
 const body = document.querySelector('body');
 const resetBtn = document.querySelector('.again');
 let score = 20;
+let highscore = 0;
 
 // Game logic
 document.querySelector('.check').addEventListener('click', function () {
@@ -23,6 +25,12 @@ document.querySelector('.check').addEventListener('click', function () {
     number.textContent = secretNumber;
     body.style.backgroundColor = '#60b347';
     number.style.width = '30rem';
+
+    // Check and set highscore
+    if (score > highscore) {
+      highscore = score;
+      highscoreBoard.textContent = highscore;
+    }
 
     // When guess is too low
   } else if (guess < secretNumber) {
